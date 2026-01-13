@@ -82,8 +82,16 @@ conn.commit()
 print("Updated employee data:")
 for row in cursor.execute("SELECT * FROM employees"):
     print(row)
+    conn.close()
 
-
-conn.close()
-
+Output:
+Updated employee data:
+(1, 'Jane Smith', 27562.5)
+(2, 'John J. Doe', 90000.0)
+(3, 'Jane Smith', 80000.0)
+(4, 'Priya Smith', 11025.0)
+(5, 'Jane Smith', 26250.0)
+(6, 'John J. Doe', 90000.0)
+(7, 'Jane Smith', 80000.0)
+(8, 'Priya Smith', 10500.0)
 
