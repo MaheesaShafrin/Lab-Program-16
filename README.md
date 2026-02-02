@@ -30,68 +30,10 @@ plt.title("Heatmap")
 plt.tight_layout()  
 plt.show()
 
-
-
-
-
-
-
-
-import sqlite3
-
-
-conn = sqlite3.connect('my_database.db')
-
-cursor = conn.cursor()
-
-
-cursor.execute("CREATE TABLE IF NOT EXISTS employees (id INTEGER PRIMARY KEY, name TEXT, salary REAL)")
-cursor.execute("INSERT INTO employees (name, salary) VALUES ('Jane Smith', 25000.00)")
-cursor.execute("INSERT INTO employees (name, salary) VALUES ('John Doe', 70000.00)")
-cursor.execute("INSERT INTO employees (name, salary) VALUES ('Jane Smith', 80000.00)")
-cursor.execute("INSERT INTO employees (name, salary) VALUES ('Priya Smith', 10000.00)")
-conn.commit() 
-employee_name = 'John Doe'
-update_query = """
-UPDATE employees
-SET salary = ?
-WHERE name = ?
-"""
-cursor.execute(update_query, (new_salary, employee_name))
-
-
-update_multiple_cols_query = """
-UPDATE employees
-SET salary = ?, name = ?
-WHERE name = ?
-"""
-cursor.execute(update_multiple_cols_query, (90000.00, 'John J. Doe', 'John Doe'))
-
-
-update_all_query = """
-UPDATE employees
-SET salary = salary * 1.1
-"""
-
-cursor.execute("UPDATE employees SET salary = salary * 1.05 WHERE salary < ?", (80000,))
-
-
-conn.commit()
-
-
-print("Updated employee data:")
-for row in cursor.execute("SELECT * FROM employees"):
-    print(row)
-    conn.close()
-
 Output:
-Updated employee data:
-(1, 'Jane Smith', 27562.5)
-(2, 'John J. Doe', 90000.0)
-(3, 'Jane Smith', 80000.0)
-(4, 'Priya Smith', 11025.0)
-(5, 'Jane Smith', 26250.0)
-(6, 'John J. Doe', 90000.0)
-(7, 'Jane Smith', 80000.0)
-(8, 'Priya Smith', 10500.0)
+
+<img width="302" height="594" alt="Screenshot 2026-02-02 132821" src="https://github.com/user-attachments/assets/bc2a9062-47b3-4973-9644-026fd5cca358" />
+
+
+
 
